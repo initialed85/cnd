@@ -51,11 +51,14 @@ And if there are changes, the output will look something like this:
 2022/09/21 09:04:44 check-n-do; done=true
 ```
 
-If you wanted to run the above every minute as a `cron` job; simple edit your `crontab` with `crontab -e` and add the following:
+If you wanted to run the above every minute as a `cron` job; edit your `crontab` with `crontab -e` and add something like the following:
 
 ```shell
-  * *  *   *   *     /bin/bash -c "cd /home/edward/Projects/Home/dinosaur && cnd -check 'git pull >/dev/null 2>&1 && git log -b master HEAD~1..HEAD' -do 'make down ; make up'"
+  * *  *   *   *     PATH=${PATH}:${HOME}/go/bin /usr/bin/bash -c "cd ${HOME}/Projects/Home/dinosaur && cnd -check 'git pull >/dev/null 2>&1 && git log -b master HEAD~1..HEAD' -do 'make down ; make up'"
 ```
+
+I find `cron` to be a real pain in the neck (at least for Ubuntu) with its default shell, path etc so all that boilerplate helps make that
+transparent.
 
 ## Installation
 
