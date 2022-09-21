@@ -60,5 +60,5 @@ If you wanted to run the above every minute as a `cron` job; simple edit your `c
 ## Installation
 
 ```shell
-go install github.com/initialed85/check-n-do@latest
+go install github.com/initialed85/cnd@latest
 ```
